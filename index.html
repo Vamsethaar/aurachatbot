@@ -188,7 +188,6 @@
     <div class="input-box">
       <input type="text" id="user-input" placeholder="Ask for code or explanation..."/>
       <button onclick="sendMessage()">Send</button>
-      <button onclick="startVoice()">🎤</button>
     </div>
   </div>
 
@@ -236,15 +235,6 @@
       const botMessages = document.querySelectorAll(".message.bot");
       botMessages[botMessages.length - 1].innerHTML = `Aura: ${formatCode(data.response)}`;
       chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function startVoice() {
-      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-      recognition.lang = "en-US";
-      recognition.start();
-      recognition.onresult = function (event) {
-        document.getElementById("user-input").value = event.results[0][0].transcript;
-      };
     }
 
     document.getElementById("user-input").addEventListener("keydown", e => {
